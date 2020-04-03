@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.yss.test.dao.SysUserMapper">
+
+    <resultMap id="BaseResultMap" type="com.yss.test.po.SysUserPo" >
+ 			<result column="id" property="id" />
+ 			<result column="user_code" property="userCode" />
+ 			<result column="legal_code" property="legalCode" />
+ 			<result column="legal_flag" property="legalFlag" />
+ 			<result column="password" property="password" />
+ 			<result column="user_name" property="userName" />
+ 			<result column="user_type" property="userType" />
+ 			<result column="user_status" property="userStatus" />
+ 			<result column="lock_status" property="lockStatus" />
+ 			<result column="contact_info" property="contactInfo" />
+ 			<result column="email" property="email" />
+ 			<result column="remark" property="remark" />
+ 			<result column="delete_flag" property="deleteFlag" />
+ 			<result column="create_user_id" property="createUserId" />
+ 			<result column="create_time" property="createTime" />
+ 			<result column="update_user_id" property="updateUserId" />
+ 			<result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    	id,
+    	user_code,
+    	legal_code,
+    	legal_flag,
+    	password,
+    	user_name,
+    	user_type,
+    	user_status,
+    	lock_status,
+    	contact_info,
+    	email,
+    	remark,
+    	delete_flag,
+    	create_user_id,
+    	create_time,
+    	update_user_id,
+    	update_time 
+    </sql>
+
+    <insert id="insert"  keyProperty="id" parameterType="com.yss.test.po.SysUserPo">
+        INSERT INTO sys_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+    			<if test ='null != id'>
+	        		id,
+	       		</if>
+    			<if test ='null != userCode'>
+	        		user_code,
+	       		</if>
+    			<if test ='null != legalCode'>
+	        		legal_code,
+	       		</if>
+    			<if test ='null != legalFlag'>
+	        		legal_flag,
+	       		</if>
+    			<if test ='null != password'>
+	        		password,
+	       		</if>
+    			<if test ='null != userName'>
+	        		user_name,
+	       		</if>
+    			<if test ='null != userType'>
+	        		user_type,
+	       		</if>
+    			<if test ='null != userStatus'>
+	        		user_status,
+	       		</if>
+    			<if test ='null != lockStatus'>
+	        		lock_status,
+	       		</if>
+    			<if test ='null != contactInfo'>
+	        		contact_info,
+	       		</if>
+    			<if test ='null != email'>
+	        		email,
+	       		</if>
+    			<if test ='null != remark'>
+	        		remark,
+	       		</if>
+    			<if test ='null != deleteFlag'>
+	        		delete_flag,
+	       		</if>
+    			<if test ='null != createUserId'>
+	        		create_user_id,
+	       		</if>
+    			<if test ='null != createTime'>
+	        		create_time,
+	       		</if>
+    			<if test ='null != updateUserId'>
+	        		update_user_id,
+	       		</if>
+    			<if test ='null != updateTime'>
+	        		update_time 
+	       		</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+
+        		<if test ='null != id'>
+	 			 	id,
+	       		</if>
+        		<if test ='null != userCode'>
+	 			 	userCode,
+	       		</if>
+        		<if test ='null != legalCode'>
+	 			 	legalCode,
+	       		</if>
+        		<if test ='null != legalFlag'>
+	 			 	legalFlag,
+	       		</if>
+        		<if test ='null != password'>
+	 			 	password,
+	       		</if>
+        		<if test ='null != userName'>
+	 			 	userName,
+	       		</if>
+        		<if test ='null != userType'>
+	 			 	userType,
+	       		</if>
+        		<if test ='null != userStatus'>
+	 			 	userStatus,
+	       		</if>
+        		<if test ='null != lockStatus'>
+	 			 	lockStatus,
+	       		</if>
+        		<if test ='null != contactInfo'>
+	 			 	contactInfo,
+	       		</if>
+        		<if test ='null != email'>
+	 			 	email,
+	       		</if>
+        		<if test ='null != remark'>
+	 			 	remark,
+	       		</if>
+        		<if test ='null != deleteFlag'>
+	 			 	deleteFlag,
+	       		</if>
+        		<if test ='null != createUserId'>
+	 			 	createUserId,
+	       		</if>
+        		<if test ='null != createTime'>
+	 			 	createTime,
+	       		</if>
+        		<if test ='null != updateUserId'>
+	 			 	updateUserId,
+	       		</if>
+        		<if test ='null != updateTime'>
+	 			 	updateTime 
+	       		</if>
+        </trim>
+    </insert>
+    
+    <update id="deleteById" parameterType="com.yss.test.po.SysUserPo">
+    	UPDATE sys_user
+    	SET delete_flag = #{deleteFlag}, 
+    		update_user_id = #{updateUserId},
+    	 	update_time = #{updateTime}
+	    WHERE id = #{id}
+    </update>
+    
+    <update id="update" parameterType="com.yss.test.po.SysUserPo">
+        UPDATE sys_user
+        <set>
+        		<if test ='null != id'>
+        			id =#{id},
+        		</if>
+        		<if test ='null != userCode'>
+        			user_code =#{userCode},
+        		</if>
+        		<if test ='null != legalCode'>
+        			legal_code =#{legalCode},
+        		</if>
+        		<if test ='null != legalFlag'>
+        			legal_flag =#{legalFlag},
+        		</if>
+        		<if test ='null != password'>
+        			password =#{password},
+        		</if>
+        		<if test ='null != userName'>
+        			user_name =#{userName},
+        		</if>
+        		<if test ='null != userType'>
+        			user_type =#{userType},
+        		</if>
+        		<if test ='null != userStatus'>
+        			user_status =#{userStatus},
+        		</if>
+        		<if test ='null != lockStatus'>
+        			lock_status =#{lockStatus},
+        		</if>
+        		<if test ='null != contactInfo'>
+        			contact_info =#{contactInfo},
+        		</if>
+        		<if test ='null != email'>
+        			email =#{email},
+        		</if>
+        		<if test ='null != remark'>
+        			remark =#{remark},
+        		</if>
+        		<if test ='null != deleteFlag'>
+        			delete_flag =#{deleteFlag},
+        		</if>
+        		<if test ='null != createUserId'>
+        			create_user_id =#{createUserId},
+        		</if>
+        		<if test ='null != createTime'>
+        			create_time =#{createTime},
+        		</if>
+        		<if test ='null != updateUserId'>
+        			update_user_id =#{updateUserId},
+        		</if>
+        		<if test ='null != updateTime'>
+        			update_time =#{updateTime} 
+        		</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM sys_user
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectByEntity" resultMap="CapitalAccountRepMap" parameterType="com.yss.test.po.SysUserPo">
+        SELECT <include refid="Base_Column_List" />
+        FROM sys_user
+        WHERE 1=1
+        		<if test ='null != id'>
+        			and id =#{id}
+        		</if>
+        		<if test ='null != userCode'>
+        			and user_code =#{userCode}
+        		</if>
+        		<if test ='null != legalCode'>
+        			and legal_code =#{legalCode}
+        		</if>
+        		<if test ='null != legalFlag'>
+        			and legal_flag =#{legalFlag}
+        		</if>
+        		<if test ='null != password'>
+        			and password =#{password}
+        		</if>
+        		<if test ='null != userName'>
+        			and user_name =#{userName}
+        		</if>
+        		<if test ='null != userType'>
+        			and user_type =#{userType}
+        		</if>
+        		<if test ='null != userStatus'>
+        			and user_status =#{userStatus}
+        		</if>
+        		<if test ='null != lockStatus'>
+        			and lock_status =#{lockStatus}
+        		</if>
+        		<if test ='null != contactInfo'>
+        			and contact_info =#{contactInfo}
+        		</if>
+        		<if test ='null != email'>
+        			and email =#{email}
+        		</if>
+        		<if test ='null != remark'>
+        			and remark =#{remark}
+        		</if>
+        		<if test ='null != deleteFlag'>
+        			and delete_flag =#{deleteFlag}
+        		</if>
+        		<if test ='null != createUserId'>
+        			and create_user_id =#{createUserId}
+        		</if>
+        		<if test ='null != createTime'>
+        			and create_time =#{createTime}
+        		</if>
+        		<if test ='null != updateUserId'>
+        			and update_user_id =#{updateUserId}
+        		</if>
+        		<if test ='null != updateTime'>
+        			and update_time =#{updateTime}
+        		</if>
+       	ORDER BY create_time DESC
+    </select>
+    
+  
+  
+</mapper>

@@ -1,0 +1,15 @@
+{
+  "databaseConfig": {
+    "dataType": "mysql",
+    "url": "jdbc:mysql://192.168.74.5:3306/basic",
+    "userName": "root",
+    "password": "root",
+    "databaseName": "basic"
+  },
+  "generateCodeConfig": {
+    "tableName": "sys_user",
+    "poPackageName": "com.yss.test.po",
+    "poName": "test",
+    "mapperPackageName": "com.yss.test.dao"
+  }
+}
