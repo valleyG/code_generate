@@ -15,10 +15,6 @@ public class GenerateCodeConfig {
      */
     private String poPackageName;
     /**
-     * po的名称
-     */
-    private String poName;
-    /**
      * mapper的包路径
      */
     private String mapperPackageName;
