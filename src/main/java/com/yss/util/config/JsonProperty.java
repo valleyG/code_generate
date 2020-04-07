@@ -14,7 +14,9 @@ public class JsonProperty {
 
     static {
         try {
-            InputStream inputStream = JsonProperty.class.getResourceAsStream("/property.json");
+            String property = System.getProperty("user.dir");
+            InputStream inputStream = new FileInputStream(new File(property+"\\setting.json"));
+            //InputStream inputStream = JsonProperty.class.getResourceAsStream("/property.json");
             ByteArrayOutputStream outStream = new ByteArrayOutputStream();
             byte[] data = new byte[1024];
             int count = -1;

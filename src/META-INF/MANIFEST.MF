@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: com.yss.util.CodeGenerate
+Class-Path: /lib/freemarker-2.3.23.jar /lib/commons-lang3-3.7.jar /lib/m
+ ysql-connector-java-5.1.45.jar /lib/gson-2.8.5.jar
+

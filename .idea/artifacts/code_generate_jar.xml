@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="code_generate:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/code_generate_jar</output-path>
+    <root id="archive" name="code_generate.jar">
+      <element id="module-output" name="code_generate" />
+      <element id="extracted-dir" path="G:/repository/org/freemarker/freemarker/2.3.23/freemarker-2.3.23.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="G:/repository/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="G:/repository/mysql/mysql-connector-java/5.1.45/mysql-connector-java-5.1.45.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="G:/repository/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

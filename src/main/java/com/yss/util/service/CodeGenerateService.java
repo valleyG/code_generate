@@ -1,16 +1,16 @@
 package com.yss.util.service;
 
-import com.yss.util.config.GenerateCodeConfig;
 import com.yss.util.config.JsonProperty;
-import com.yss.util.config.SettingConfig;
 import com.yss.util.entity.TableColEntity;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
 
 import java.io.*;
-import java.lang.reflect.Field;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * @author:zhuhongmin

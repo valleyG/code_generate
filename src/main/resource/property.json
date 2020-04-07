@@ -2,13 +2,13 @@
   "databaseConfig": {
     "dataType": "mysql",
     "url": "jdbc:mysql://192.168.0.72:3306/bmtp_dev",
-    "userName": "root",
-    "password": "123456",
-    "databaseName": "bmtp_dev"
-  },
-  "generateCodeConfig": {
-    "tableName": "b_dimc_accountbalance",
-    "poPackageName": "com.yss.test.po",
-    "mapperPackageName": "com.yss.test.dao"
-  }
+"userName": "root",
+"password": "123456",
+"databaseName": "bmtp_dev"
+},
+"generateCodeConfig": {
+"tableName": "test_code",
+"poPackageName": "com.yss.test.po",
+"mapperPackageName": "com.yss.test.dao"
+}
 }
