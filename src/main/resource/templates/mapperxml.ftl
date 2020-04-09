@@ -29,7 +29,7 @@
 
         	 <#list tableCols as p>
         		<if test ='null != ${p.javaColName}'>
-	 			 	${p.javaColName}<#if p_has_next>,<#else> </#if>
+	 			 	${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
 	       		</if>
 			</#list>
         </trim>
@@ -61,7 +61,7 @@
         WHERE id = ${id}
     </select>
 
-    <select id="selectByEntity" resultMap="CapitalAccountRepMap" parameterType="${poFullPath}">
+    <select id="selectByEntity" resultMap="BaseResultMap" parameterType="${poFullPath}">
         SELECT <include refid="Base_Column_List" />
         FROM ${tableName}
         WHERE 1=1
@@ -70,9 +70,17 @@
         			and ${p.colName} =${p.xmlJavaColValue}
         		</if>
 			</#list>
-       	ORDER BY create_time DESC
     </select>
     
-  
+  <select id="listByEntity" resultMap="BaseResultMap" parameterType="${poFullPath}">
+        SELECT <include refid="Base_Column_List" />
+        FROM ${tableName}
+        WHERE 1=1
+            <#list tableCols as p>
+                <if test ='null != ${p.javaColName}'>
+                    and ${p.colName} =${p.xmlJavaColValue}
+                </if>
+            </#list>
+    </select>
   
 </mapper>

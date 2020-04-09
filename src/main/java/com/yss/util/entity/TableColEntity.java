@@ -68,6 +68,9 @@ public class TableColEntity {
             case "timestamp":
                 javaType = "Timestamp";
                 break;
+            case "tinyint":
+                javaType = "Integer";
+                break;
             default:
                 javaType = "String";
         }
