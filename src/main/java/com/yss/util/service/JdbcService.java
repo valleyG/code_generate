@@ -50,7 +50,7 @@ public class JdbcService {
 
     public List<TableColEntity> getTableCols(String databaseName, String tableName) throws Exception {
         List<TableColEntity> result = new ArrayList<>();
-        PreparedStatement statement = getConnection().prepareStatement("SELECT column_name as cloName,data_type as type FROM information_schema.columns WHERE table_schema= ? AND table_name=?");
+        PreparedStatement statement = getConnection().prepareStatement("SELECT column_name as cloName,data_type as type,column_comment as comment FROM information_schema.columns WHERE table_schema= ? AND table_name=?");
         statement.setString(1, databaseName);
         statement.setString(2, tableName);
         ResultSet resultSet = statement.executeQuery();

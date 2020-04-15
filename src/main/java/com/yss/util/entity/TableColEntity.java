@@ -37,6 +37,11 @@ public class TableColEntity {
     private String colType;
 
     /**
+     * 字段备注
+     */
+    private String comment;
+
+    /**
      * 转换数据库对象到java对象
      *
      * @return
