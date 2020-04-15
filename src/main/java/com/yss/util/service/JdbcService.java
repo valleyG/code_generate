@@ -8,7 +8,9 @@ import com.yss.util.enu.DatabaseType;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author:zhuhongmin
@@ -17,6 +19,18 @@ import java.util.List;
  **/
 public class JdbcService {
     private static Connection connection;
+    private static Map<String,String> baseCol = new HashMap<>();
+    static {
+        baseCol.put("create_user_Id","");
+        baseCol.put("create_time","");
+        baseCol.put("id","");
+        baseCol.put("update_user_id","");
+        baseCol.put("audit_state","");
+        baseCol.put("update_time","");
+        baseCol.put("delete_flag","");
+        baseCol.put("audit_user_id","");
+        baseCol.put("audit_time","");
+    }
 
     public Connection getConnection() throws Exception {
         if (null == connection) {
@@ -42,6 +56,9 @@ public class JdbcService {
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()) {
             TableColEntity colEntity = new TableColEntity();
+            if (baseCol.containsKey(resultSet.getString("cloName"))){
+                continue;
+            }
             colEntity.setColName(resultSet.getString("cloName"));
             colEntity.setColType(resultSet.getString("type"));
             result.add(colEntity);
