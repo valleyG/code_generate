@@ -7,10 +7,7 @@ import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author:zhuhongmin
@@ -20,6 +17,18 @@ import java.util.Map;
 public class CodeGenerateService {
     private static JdbcService jdbcService = new JdbcService();
     private Configuration freemarkerConfiguration = null;
+    private static Map<String,String> baseCol = new HashMap<>();
+    static {
+        baseCol.put("create_user_Id","");
+        baseCol.put("create_time","");
+        baseCol.put("id","");
+        baseCol.put("update_user_id","");
+        baseCol.put("audit_state","");
+        baseCol.put("update_time","");
+        baseCol.put("delete_flag","");
+        baseCol.put("audit_user_id","");
+        baseCol.put("audit_time","");
+    }
 
     /**
      * 代码生成
@@ -53,7 +62,16 @@ public class CodeGenerateService {
                 new FileOutputStream(file), "UTF-8"));
 
         Map<String, Object> modelData = new HashMap<>();
-        modelData.put("tableCols", tableCols);
+        List<TableColEntity> poCols = new ArrayList<>();
+        for (TableColEntity tableCol : tableCols) {
+            if (baseCol.containsKey(tableCol.getColName())){
+                continue;
+            }
+            else{
+                poCols.add(tableCol);
+            }
+        }
+        modelData.put("tableCols", poCols);
         modelData.put("poName", transfer(JsonProperty.getGenerateCodeConfig().getTableName(), true) + "Po");
         modelData.put("packageName", JsonProperty.getGenerateCodeConfig().getPoPackageName());
         template.process(modelData, w);
