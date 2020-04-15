@@ -41,6 +41,10 @@ public class TableColEntity {
      */
     private String comment;
 
+    public String getComment() {
+        return comment;
+    }
+
     /**
      * 转换数据库对象到java对象
      *

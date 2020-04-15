@@ -1,14 +1,14 @@
 {
   "databaseConfig": {
     "dataType": "mysql",
-    "url": "jdbc:mysql://192.168.0.72:3306/bmtp_dev",
-"userName": "root",
-"password": "123456",
-"databaseName": "bmtp_dev"
+    "url": "jdbc:mysql://192.168.73.104:3306/tool",
+    "userName": "root",
+    "password": "root",
+"databaseName": "tool"
 },
 "generateCodeConfig": {
-"tableName": "test_code",
-"poPackageName": "com.yss.test.po",
-"mapperPackageName": "com.yss.test.dao"
+"tableName": "imp_exp_task_info",
+"poPackageName": "com.yss.ta.tool.domain.po",
+"mapperPackageName": "com.yss.ta.tool.domain.mapper"
 }
 }

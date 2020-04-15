@@ -7,9 +7,10 @@ import java.security.Timestamp;
 import java.util.Date;
 @Data
 @Accessors(chain = true)
+@ApiModel("")
 public class ${poName} extends BasePO{
 <#list tableCols as p>
-
+@ApiModelProperty("${p.comment}")
 private ${p.javaType} ${p.javaColName};
 
 </#list>

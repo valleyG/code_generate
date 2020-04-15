@@ -60,6 +60,7 @@ public class JdbcService {
                 continue;
             }
             colEntity.setColName(resultSet.getString("cloName"));
+            colEntity.setComment(resultSet.getString("comment"));
             colEntity.setColType(resultSet.getString("type"));
             result.add(colEntity);
         }
