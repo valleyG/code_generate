@@ -7,7 +7,7 @@ import java.security.Timestamp;
 import java.util.Date;
 @Data
 @Accessors(chain = true)
-public class ${poName}{
+public class ${poName} extends BasePO{
 <#list tableCols as p>
 
 private ${p.javaType} ${p.javaColName};
