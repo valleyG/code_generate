@@ -19,7 +19,7 @@ public class CodeGenerateService {
     private Configuration freemarkerConfiguration = null;
     private static Map<String,String> baseCol = new HashMap<>();
     static {
-        baseCol.put("create_user_Id","");
+        baseCol.put("create_user_id","");
         baseCol.put("create_time","");
         baseCol.put("id","");
         baseCol.put("update_user_id","");
