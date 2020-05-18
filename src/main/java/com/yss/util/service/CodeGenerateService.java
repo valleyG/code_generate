@@ -28,6 +28,7 @@ public class CodeGenerateService {
         baseCol.put("delete_flag","");
         baseCol.put("audit_user_id","");
         baseCol.put("audit_time","");
+        baseCol.put("audit_reason","");
     }
 
     /**
