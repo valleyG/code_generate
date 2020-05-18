@@ -72,6 +72,18 @@
 			</#list>
         </where>
     </select>
+    <insert id="batchInsert" parameterType="com.yss.ta.rate.domain.po.ParamFeeInfoPo">
+        INSERT INTO ${tableName}
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <include refid="Base_Column_List"></include>
+        </trim>
+        values
+        <foreach collection="list" item="entity" open="(" close=")" separator=",">
+                <#list tableCols as p>
+                ${p.batchXmlJavaColValue}
+            </#list>
+        </foreach>
+    </insert>
     
   <select id="listByEntity" resultMap="BaseResultMap" parameterType="${poFullPath}">
         SELECT <include refid="Base_Column_List" />

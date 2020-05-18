@@ -31,6 +31,10 @@ public class TableColEntity {
         return "#{" + CodeGenerateService.transfer(colName, false) + "}";
     }
 
+    public String getBatchXmlJavaColValue() {
+        return "#{entity." + CodeGenerateService.transfer(colName, false) + "}";
+    }
+
     /**
      * 字段类型
      */
