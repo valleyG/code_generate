@@ -64,23 +64,25 @@
     <select id="selectByEntity" resultMap="BaseResultMap" parameterType="${poFullPath}">
         SELECT <include refid="Base_Column_List" />
         FROM ${tableName}
-        WHERE 1=1
+        <where>
          	<#list tableCols as p>
         		<if test ='null != ${p.javaColName}'>
         			and ${p.colName} =${p.xmlJavaColValue}
         		</if>
 			</#list>
+        </where>
     </select>
     
   <select id="listByEntity" resultMap="BaseResultMap" parameterType="${poFullPath}">
         SELECT <include refid="Base_Column_List" />
         FROM ${tableName}
-        WHERE 1=1
+        <where>
             <#list tableCols as p>
                 <if test ='null != ${p.javaColName}'>
                     and ${p.colName} =${p.xmlJavaColValue}
                 </if>
             </#list>
+        </where>
     </select>
   
 </mapper>
