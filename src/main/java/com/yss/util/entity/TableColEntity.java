@@ -60,7 +60,7 @@ public class TableColEntity {
                 javaType = "Integer";
                 break;
             case "char":
-                javaType = "Character";
+                javaType = "String";
                 break;
             case "date":
                 javaType = "Date";
