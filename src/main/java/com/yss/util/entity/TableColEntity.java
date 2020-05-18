@@ -57,7 +57,7 @@ public class TableColEntity {
                 javaType = "String";
                 break;
             case "bigint":
-                javaType = "Integer";
+                javaType = "Long";
                 break;
             case "char":
                 javaType = "String";
