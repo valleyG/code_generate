@@ -20,7 +20,7 @@
         INSERT INTO ${tableName}
         <trim prefix="(" suffix=")" suffixOverrides=",">
         	<#list tableCols as p>
-    			<if test ='null != ${p.javaColName}'>
+    			<if test ='null != ${p.javaColName} and ""!= ${p.javaColName}'>
 	        		${p.colName}<#if p_has_next>,<#else> </#if>
 	       		</if>
 			</#list>
@@ -28,7 +28,7 @@
         <trim prefix="values (" suffix=")" suffixOverrides=",">
 
         	 <#list tableCols as p>
-        		<if test ='null != ${p.javaColName}'>
+        		<if test ='null != ${p.javaColName} and ""!= ${p.javaColName}'>
 	 			 	${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
 	       		</if>
 			</#list>
@@ -47,7 +47,7 @@
         UPDATE ${tableName}
         <set>
         	<#list tableCols as p>
-        		<if test ='null != ${p.javaColName}'>
+        		<if test ='null != ${p.javaColName} and ""!= ${p.javaColName}'>
         			${p.colName} =${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
         		</if>
 			</#list>
@@ -66,7 +66,7 @@
         FROM ${tableName}
         <where>
          	<#list tableCols as p>
-        		<if test ='null != ${p.javaColName}'>
+        		<if test ='null != ${p.javaColName} and ""!= ${p.javaColName}'>
         			and ${p.colName} =${p.xmlJavaColValue}
         		</if>
 			</#list>
@@ -90,8 +90,8 @@
         FROM ${tableName}
         <where>
             <#list tableCols as p>
-                <if test ='null != ${p.javaColName}'>
-                    and ${p.colName} =${p.xmlJavaColValue}
+                <if test ='null != ${p.javaColName} and ""!= ${p.javaColName}'>
+                    and ${p.colName} =${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
                 </if>
             </#list>
         </where>
