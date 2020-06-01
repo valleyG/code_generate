@@ -20,17 +20,29 @@
         INSERT INTO ${tableName}
         <trim prefix="(" suffix=")" suffixOverrides=",">
         	<#list tableCols as p>
-    			<if test ='null != ${p.javaColName} and "" != ${p.javaColName}'>
-	        		${p.colName}<#if p_has_next>,<#else> </#if>
-	       		</if>
+    	       <#if p.javaType?index_of("String")!=-1>
+                <if test ='null != ${p.javaColName} and  "" != ${p.javaColName}'>
+                     ${p.colName}<#if p_has_next>,<#else> </#if>
+                </if>
+                <#else> 
+                <if test ='null != ${p.javaColName}'>
+                     ${p.colName} <#if p_has_next>,<#else> </#if>
+                </if>
+                </#if>
 			</#list>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
 
         	 <#list tableCols as p>
-        		<if test ='null != ${p.javaColName} and "" != ${p.javaColName}'>
-	 			 	${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
-	       		</if>
+              <#if p.javaType?index_of("String")!=-1>
+                <if test ='null != ${p.javaColName} and "" != ${p.javaColName}'>
+                     ${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
+                </if>
+                <#else> 
+                <if test ='null != ${p.javaColName}'>
+                     ${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
+                </if>
+                </#if>
 			</#list>
         </trim>
     </insert>
@@ -47,9 +59,15 @@
         UPDATE ${tableName}
         <set>
         	<#list tableCols as p>
-        		<if test ='null != ${p.javaColName} and "" != ${p.javaColName}'>
-        			${p.colName} =${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
-        		</if>
+              <#if p.javaType?index_of("String")!=-1>
+                <if test ='null != ${p.javaColName} and "" != ${p.javaColName}'>
+                    and ${p.colName} =${p.xmlJavaColValue}
+                </if>
+                <#else> 
+                <if test ='null != ${p.javaColName}'>
+                    and ${p.colName} =${p.xmlJavaColValue}
+                </if>
+                </#if>
 			</#list>
         </set>
         WHERE id = ${id}
@@ -66,22 +84,28 @@
         FROM ${tableName}
         <where>
          	<#list tableCols as p>
-        		<if test ='null != ${p.javaColName} and "" != ${p.javaColName}'>
-        			and ${p.colName} =${p.xmlJavaColValue}
-        		</if>
+        	     <#if p.javaType?index_of("String")!=-1>
+                <if test ='null != ${p.javaColName} and "" != ${p.javaColName}'>
+                    and ${p.colName} =${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
+                </if>
+                <#else> 
+                <if test ='null != ${p.javaColName}'>
+                    and ${p.colName} =${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
+                </if>
+                </#if>
 			</#list>
         </where>
     </select>
-    <insert id="batchInsert" parameterType="com.yss.ta.rate.domain.po.ParamFeeInfoPo">
+    <insert id="batchInsert" parameterType="list">
         INSERT INTO ${tableName}
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <include refid="Base_Column_List"></include>
         </trim>
         values
-        <foreach collection="list" item="entity" open="(" close=")" separator=",">
-                <#list tableCols as p>
-                ${p.batchXmlJavaColValue}
-            </#list>
+        <foreach collection="list" item="entity"  separator=",">
+               ( <#list tableCols as p>
+                ${p.batchXmlJavaColValue}<#if p_has_next>,<#else> </#if>
+            </#list>)
         </foreach>
     </insert>
     
@@ -90,9 +114,15 @@
         FROM ${tableName}
         <where>
             <#list tableCols as p>
+                 <#if p.javaType?index_of("String")!=-1>
                 <if test ='null != ${p.javaColName} and "" != ${p.javaColName}'>
-                    and ${p.colName} =${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
+                    and ${p.colName} =${p.xmlJavaColValue}
                 </if>
+                <#else> 
+                <if test ='null != ${p.javaColName}'>      
+                    and ${p.colName} =${p.xmlJavaColValue}
+                </if>
+                </#if>
             </#list>
         </where>
     </select>
