@@ -61,11 +61,11 @@
         	<#list tableCols as p>
               <#if p.javaType?index_of("String")!=-1>
                 <if test ='null != ${p.javaColName} and "" != ${p.javaColName}'>
-                    and ${p.colName} =${p.xmlJavaColValue}
+                    ${p.colName} =${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
                 </if>
                 <#else> 
                 <if test ='null != ${p.javaColName}'>
-                    and ${p.colName} =${p.xmlJavaColValue}
+                    ${p.colName} =${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
                 </if>
                 </#if>
 			</#list>
@@ -79,6 +79,20 @@
         WHERE id = ${id}
     </select>
 
+    <select id="listByCondition" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" />
+        FROM ${tableName}
+        <where>
+            <if test="extraSpliceSql != null and  extraSpliceSql != ''">
+                and ${extraSpliceSql}
+            </if>
+            <if test="spliceSql != null and spliceSql != ''">
+                and ${spliceSql}
+            </if>
+        </where>
+    </select>
+
+
     <select id="selectByEntity" resultMap="BaseResultMap" parameterType="${poFullPath}">
         SELECT <include refid="Base_Column_List" />
         FROM ${tableName}
@@ -86,11 +100,11 @@
          	<#list tableCols as p>
         	     <#if p.javaType?index_of("String")!=-1>
                 <if test ='null != ${p.javaColName} and "" != ${p.javaColName}'>
-                    and ${p.colName} =${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
+                    and ${p.colName} =${p.xmlJavaColValue}
                 </if>
                 <#else> 
                 <if test ='null != ${p.javaColName}'>
-                    and ${p.colName} =${p.xmlJavaColValue}<#if p_has_next>,<#else> </#if>
+                    and ${p.colName} =${p.xmlJavaColValue}
                 </if>
                 </#if>
 			</#list>
