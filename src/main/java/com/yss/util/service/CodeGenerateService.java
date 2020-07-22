@@ -102,6 +102,8 @@ public class CodeGenerateService {
         modelData.put("deleteFlag","#{deleteFlag}");
         modelData.put("updateUserId","#{updateUserId}");
         modelData.put("updateTime","#{updateTime}");
+        modelData.put("extraSpliceSql","${extraSpliceSql}");
+        modelData.put("spliceSql","${spliceSql}");
         template.process(modelData, w);
 
     }
