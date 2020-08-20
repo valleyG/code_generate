@@ -140,5 +140,21 @@
             </#list>
         </where>
     </select>
-  
+    <select id="exist" resultType="integer">
+    	select 1
+    	FROM ${tableName} 
+    	<where>
+            <#list tableCols as p>
+                 <#if p.javaType?index_of("String")!=-1>
+                <if test ='null != ${p.javaColName} and "" != ${p.javaColName}'>
+                    and ${p.colName} =${p.xmlJavaColValue}
+                </if>
+                <#else> 
+                <if test ='null != ${p.javaColName}'>      
+                    and ${p.colName} =${p.xmlJavaColValue}
+                </if>
+                </#if>
+            </#list>
+        </where>
+    </select>
 </mapper>
