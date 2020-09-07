@@ -58,7 +58,7 @@ public class CodeGenerateService {
 
         //TODO 生成po文件
         Template template = getConfiguration().getTemplate("po.ftl");
-        file = new File(codeDir.toString() + transfer(JsonProperty.getGenerateCodeConfig().getTableName(), true) + "Po.java");
+        file = new File(codeDir.toString() + transfer(JsonProperty.getGenerateCodeConfig().getTableName(), true) + "PO.java");
         Writer w = new BufferedWriter(new OutputStreamWriter(
                 new FileOutputStream(file), "UTF-8"));
 
@@ -73,7 +73,7 @@ public class CodeGenerateService {
             }
         }
         modelData.put("tableCols", poCols);
-        modelData.put("poName", transfer(JsonProperty.getGenerateCodeConfig().getTableName(), true) + "Po");
+        modelData.put("poName", transfer(JsonProperty.getGenerateCodeConfig().getTableName(), true) + "PO");
         modelData.put("packageName", JsonProperty.getGenerateCodeConfig().getPoPackageName());
         template.process(modelData, w);
 
@@ -84,7 +84,7 @@ public class CodeGenerateService {
                 new FileOutputStream(file), "UTF-8"));
         modelData.clear();
         modelData.put("mapperName", transfer(JsonProperty.getGenerateCodeConfig().getTableName(), true) + "Mapper");
-        modelData.put("poName", transfer(JsonProperty.getGenerateCodeConfig().getTableName(), true) + "Po");
+        modelData.put("poName", transfer(JsonProperty.getGenerateCodeConfig().getTableName(), true) + "PO");
         modelData.put("packageName", JsonProperty.getGenerateCodeConfig().getMapperPackageName());
         template.process(modelData, w);
 
@@ -96,7 +96,7 @@ public class CodeGenerateService {
         modelData.clear();
         modelData.put("tableCols", tableCols);
         modelData.put("mapperFullPath", JsonProperty.getGenerateCodeConfig().getMapperPackageName() + "." + transfer(JsonProperty.getGenerateCodeConfig().getTableName(), true) + "Mapper");
-        modelData.put("poFullPath", JsonProperty.getGenerateCodeConfig().getPoPackageName() + "." + transfer(JsonProperty.getGenerateCodeConfig().getTableName(), true) + "Po");
+        modelData.put("poFullPath", JsonProperty.getGenerateCodeConfig().getPoPackageName() + "." + transfer(JsonProperty.getGenerateCodeConfig().getTableName(), true) + "PO");
         modelData.put("tableName",JsonProperty.getGenerateCodeConfig().getTableName());
         modelData.put("id","#{id}");
         modelData.put("deleteFlag","#{deleteFlag}");

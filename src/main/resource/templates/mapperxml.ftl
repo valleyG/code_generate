@@ -156,5 +156,6 @@
                 </#if>
             </#list>
         </where>
+        limit 1
     </select>
 </mapper>
